@@ -17,7 +17,7 @@ SUM_tokenizer = PreTrainedTokenizerFast.from_pretrained("ainize/kobart-news")
 model = BartForConditionalGeneration.from_pretrained("ainize/kobart-news")
 
 
-directory_path = '/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/raw_data/00_harvard.json'
+directory_path = '/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/raw_data/01_Machine_learning.json'
 
 openai_api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=openai_api_key)
@@ -56,6 +56,7 @@ def generate_documentation(splitted_content):
         "Document it in a form that does not seem like human speech and DO NOT summarize!\n" 
         "The documented form should be at least 1000 characters, removing the characteristics of direct spoken language, and restructure it into a more formal and organized format of text.\n"
         "Ensure the text avoids vague references such as 'it', 'this', or 'etc.', and instead directly states the subject matter."
+        "When referring to algorithms or terms that are commonly abbreviated with symbols for example, 'A*', please spell out the full term as 'A-STAR' for clarity."
         "And make sure to send it in the form of one sentence of text!!!\n"
         f"Provided text:\n{splitted_content}\n"
     )
@@ -98,7 +99,7 @@ def generate_id(item):
 
 def process_files():
     print("=====================PROCESS FILES FUNCTION=====================")
-    with open('/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/raw_data/00_harvard.json', 'r', encoding='utf-8') as file:
+    with open('/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/raw_data/01_Machine_learning.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
         final_result = {'data': []} 
 
@@ -127,7 +128,7 @@ def process_files():
 all_documentations = process_files()
 
 # Specify your output file path
-output_file_path = '/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/completed_data/00_harvard.json'
+output_file_path = '/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/completed_data/01_Machine_learning.json'
 
 # Save the documentation_object to a JSON file
 with open(output_file_path, 'w', encoding='utf-8') as f:

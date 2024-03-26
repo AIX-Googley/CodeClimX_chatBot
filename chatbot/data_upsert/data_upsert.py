@@ -12,7 +12,7 @@ from sentence_transformers import SentenceTransformer
 #dense model
 device = 'cpu'
 dense_model = SentenceTransformer(
-    'msmarco-bert-base-dot-v5',
+    'distiluse-base-multilingual-cased-v1',
     device=device
 )
 
@@ -41,7 +41,7 @@ with open('/Users/babyybiss/dev/projects/codeClimX_chatbot/chatbot/data/complete
 
 
 # Define the vector dimension based on your model's output (e.g., 384 for 'all-MiniLM-L6-v2')
-vector_dimension = 768
+vector_dimension = 512
 
 # The name of your Pinecone index
 index_name = 'curriculum'.lower()  # Ensure the name is lowercase
